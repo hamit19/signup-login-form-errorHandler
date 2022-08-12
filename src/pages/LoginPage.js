@@ -24,7 +24,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="grid h-screen grid-cols-1 bg-white sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-12">
+    <div className="grid h-full grid-cols-1 bg-white sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-12">
       <div className=" md:col-span-5 relative lg:col-span-7 hidden md:flex ">
         <div className=" after:z-20 w-full h-full after:content-['*'] after:bg-black after:bg-opacity-50 after:absolute after:left-0 after:right-0 after:bottom-0 after:top-0 ">
           <div className="absolute z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-justify font-medium  text-slate-50 p-8 w-[90%] rounded-md lg:max-w-xl bg-black bg-opacity-50">

@@ -1,6 +1,12 @@
 @tailwind base;
 
 @layer base {
+  html,
+  body,
+  #root,
+  .App {
+    height: 100%;
+  }
 }
 
 @tailwind components;
