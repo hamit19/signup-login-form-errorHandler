@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BtnComponent from "../components/BtnComponent";
 import FormComponent from "../components/FormComponent";
@@ -15,17 +15,35 @@ const LoginPage = () => {
     password: "",
   });
 
+  const [inputType, setInputType] = useState("");
+
   const [errorMessage, setErrorMessage] = useState({});
 
   const onChangeInputHandler = (e) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    let value = e.target.value;
+
+    value.includes("@") ? setInputType("email") : setInputType("username");
+
+    if (inputType === "email") {
+      setUserInfo({ ...userInfo, email: value, username: "" });
+      console.log(inputType);
+    }
+
+    if (inputType === "username") {
+      setUserInfo({ ...userInfo, email: "", username: value });
+      console.log(inputType);
+    }
+
+    if (e.target.name === "password") {
+      setUserInfo({ ...userInfo, password: value });
+    }
 
     setErrorMessage(ValidateInput(userInfo));
   };
 
   return (
     <div className="grid h-full grid-cols-1 bg-white sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-12">
-      <div className=" md:col-span-5 relative lg:col-span-7 hidden md:flex ">
+      <div className="relative hidden md:col-span-5 lg:col-span-7 md:flex">
         <div className=" after:z-20 w-full h-full after:content-['*'] after:bg-black after:bg-opacity-50 after:absolute after:left-0 after:right-0 after:bottom-0 after:top-0 ">
           <div className="absolute z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-justify font-medium  text-slate-50 p-8 w-[90%] rounded-md lg:max-w-xl bg-black bg-opacity-50">
             <p>
@@ -39,7 +57,7 @@ const LoginPage = () => {
             </p>
             <hr className="my-4" />
             <h5>You can touch in with me by:</h5>
-            <div className="flex py-3 w-full justify-center gap-6 ">
+            <div className="flex justify-center w-full gap-6 py-3 ">
               <IconComponent
                 link="https://github.com/hamit19"
                 icon={<i className="fa fa-github"></i>}
@@ -54,20 +72,20 @@ const LoginPage = () => {
               />
               <IconComponent
                 link={`mailto: hamidhassaniofficial@gmail.com`}
-                icon={<i class="fa-solid fa-envelope"></i>}
+                icon={<i className="fa-solid fa-envelope"></i>}
               />
             </div>
           </div>
 
           <img
-            className="object-cover relative w-full h-full z-10"
+            className="relative z-10 object-cover w-full h-full"
             src={imageLogin}
             alt="signup"
           />
         </div>
       </div>
       <div className="relative flex flex-col justify-center col-span-1 gap-4 p-1 px-8 sm:col-span-4 sm:col-start-2 md:col-span-5 lg:col-span-5 lg:px-20 ">
-        <div className="absolute top-14">
+        <div className="mb-8">
           <h1 className="text-2xl font-bold ">Login to your account</h1>
           <span className="text-sm font-medium text-slate-500">
             Thank you for choosing us!
@@ -78,8 +96,8 @@ const LoginPage = () => {
           <InputComponent
             id="username"
             label="Username or email"
-            type="username"
-            name="username"
+            type="text"
+            name={inputType}
             onChange={onChangeInputHandler}
             errorMessage={errorMessage}
           />

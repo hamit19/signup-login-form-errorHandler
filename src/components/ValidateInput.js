@@ -4,6 +4,8 @@ const ValidateInput = (userInfo) => {
     typeError: "",
   };
 
+  console.log(userInfo);
+
   for (let key in userInfo) {
     switch (key) {
       case "email":
