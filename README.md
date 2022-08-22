@@ -1,17 +1,15 @@
 # Validating fields to signup or login action.
 
-![image-of-my-project-min](https://user-images.githubusercontent.com/96312176/184259397-694db8f0-c1d3-4712-a795-ffa8860228c2.png)
+# ![image-of-my-project-min](https://user-images.githubusercontent.com/96312176/184259397-694db8f0-c1d3-4712-a795-ffa8860228c2.png)
 
-<hr>
 
 This is a mini-project of validating input fields to signup or login action. I've used React js and Tailwindcss to implementing the mini-project.
 
 
 
+#
 
-<hr>
-
- <h2> Getting Started with Create React App </h2>
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
